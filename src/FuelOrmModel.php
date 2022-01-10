@@ -7,6 +7,7 @@ namespace Stwarog\FuelFixturesGenerator;
 use Orm\Model as BaseFuelOrm;
 use Stwarog\Uow\Utils\ReflectionHelper;
 
+/** @internal */
 final class FuelOrmModel implements Model
 {
     private const NATIVE_FUEL_RELATIONS = ['_belongs_to', '_has_one', '_has_many'];
@@ -54,8 +55,11 @@ final class FuelOrmModel implements Model
         // In native and new approach way
         foreach (self::NATIVE_FUEL_RELATIONS as $relation) {
             $hasMany = $relation === '_has_many';
-            foreach (ReflectionHelper::getValue($this->orm, $relation) as $field => $data) {
-                $relations[$field] = ['target' => $data['model_to'], 'has_many' => $hasMany];
+            $seek = ReflectionHelper::getValue($this->orm, $relation);
+            if (is_iterable($seek)) {
+                foreach (ReflectionHelper::getValue($this->orm, $relation) as $field => $data) {
+                    $relations[$field] = ['target' => $data['model_to'], 'has_many' => $hasMany];
+                }
             }
         }
 
