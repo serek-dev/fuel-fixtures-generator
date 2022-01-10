@@ -29,7 +29,9 @@
             "Tests\\": "tests/"
         },
         "files": [
-            "tests/mock/Mock.php"
+            "tests/mock/Mock.php",
+            "tests/mock/Fixture.php",
+            "tests/mock/ModelImitation.php"
         ]
     },
     "extra": {

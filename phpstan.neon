@@ -8,3 +8,9 @@ parameters:
     paths:
         - src
         - tests
+    excludePaths:
+        - tests/mock/Mock.php
+        - tests/Unit/Generator/FuelOrmModelTest.php
+        - tests/Unit/Generator/FixtureFactoryTest.php
+        - src/FuelOrmModel.php
+        - tests/mock/Fixture.php

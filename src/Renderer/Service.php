@@ -31,7 +31,7 @@ final class Service
      */
     public function generate(string $fuelOrmModel): array
     {
-        $chunk = $this->factory->create(new AdapterOf(new $fuelOrmModel));
+        $chunk = $this->factory->create(new AdapterOf(new $fuelOrmModel()));
 
         $output = $this->engine->render($this->config->outputTemplate(), compact('chunk'));
 

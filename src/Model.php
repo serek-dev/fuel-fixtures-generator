@@ -11,6 +11,6 @@ interface Model
     /** @return array<string> */
     public function getProperties(): array;
 
-    /** @return array<string, string> - property => related model full class name */
+    /** @return array<string, array<string, mixed>> - property => related model full class name */
     public function getRelations(): array;
 }

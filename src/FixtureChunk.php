@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Stwarog\FuelFixturesGenerator;
 
-use Stwarog\FuelFixturesGenerator\States\Callback;
 use Stwarog\FuelFixturesGenerator\States\Reference;
 use Stwarog\FuelFixturesGenerator\States\State;
 
@@ -16,7 +15,7 @@ final class FixtureChunk
     /** @var array<string> */
     public array $properties;
 
-    /** @var array<Callback>|array<Reference> */
+    /** @var array<State> */
     public array $states;
 
     public string $class;

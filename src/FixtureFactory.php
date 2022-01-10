@@ -34,7 +34,7 @@ final class FixtureFactory implements Factory
         # Model relations must be mapped to Fixture`s syntax (property name => nested relation fixture class)
         # each relation must be mapped to proper state for getStates method as well
         foreach ($adapted->getRelations() as $property => $data) {
-            $target = $this->name->getShortName($data['target']);
+            $target = $this->name->getFullName($data['target']);
             $fixture->addState(new Reference($property, $property, $target, $data['has_many']));
         }
 
