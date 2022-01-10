@@ -26,7 +26,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Unit\\": "tests/Unit/"
+            "Tests\\": "tests/"
         },
         "files": [
             "tests/mock/Mock.php"
