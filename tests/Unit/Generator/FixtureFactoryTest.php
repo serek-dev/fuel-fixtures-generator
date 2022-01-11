@@ -114,13 +114,13 @@ final class FixtureFactoryTest extends TestCase
         $rules = $fixture->states[3];
 
         $this->assertInstanceOf(Reference::class, $currency);
-        $this->assertSame('\\' . self::NAMESPACE . '\\ModelOrmCurrencyFixture', $currency->targetFixture);
+        $this->assertSame('\\ModelOrmCurrencyFixture', $currency->targetFixture);
         $this->assertFalse($currency->hasMany);
         $this->assertInstanceOf(Reference::class, $whitelabelRaffle);
-        $this->assertSame('\\' . self::NAMESPACE . '\\ModelWhitelabelOrmRaffleFixture', $whitelabelRaffle->targetFixture);
+        $this->assertSame('\\ModelWhitelabelOrmRaffleFixture', $whitelabelRaffle->targetFixture);
         $this->assertFalse($whitelabelRaffle->hasMany);
         $this->assertInstanceOf(Reference::class, $rules);
-        $this->assertSame('\\' . self::NAMESPACE . '\\ModelRaffleOrmRuleFixture', $rules->targetFixture);
+        $this->assertSame('\\ModelRaffleOrmRuleFixture', $rules->targetFixture);
         $this->assertTrue($rules->hasMany);
     }
 }

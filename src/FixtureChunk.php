@@ -16,7 +16,7 @@ final class FixtureChunk
     public array $properties;
 
     /** @var array<State> */
-    public array $states;
+    public array $states = [];
 
     public string $class;
 

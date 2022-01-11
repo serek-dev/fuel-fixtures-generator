@@ -33,7 +33,7 @@ final class {{ chunk.name }} extends Factory
             self::{{ state.name|upper }} => $this->{{ state.name }}(),
     {% endif %}
     {% if state.type == 'reference' %}
-    self::{{ state.name|upper }} => $this->reference('{{ state.property }}', \{{ chunk.namespace }}\{{ state.targetFixture }}::class){{ PHP_EOL }},
+        self::{{ state.name|upper }} => $this->reference('{{ state.property }}', \{{ chunk.namespace }}{{ state.targetFixture }}::class){{ PHP_EOL }},
     {% endif %}
 {% endfor %}
         ];
@@ -67,11 +67,11 @@ final class {{ chunk.name }} extends Factory
         return function (\{{ chunk.class }} $model, array $attributes = []) {
 {% for state in chunk.states %}
     {% if state.type == 'reference' %}
-            if (empty($model->{{ state.name }})) {
-                /** @var \{{ chunk.namespace }}\{{ state.targetFixture }} $fixture */
-                $fixture = $this->fixture(self::{{ state.name|upper }});
-                $model->{{ state.name }} = $fixture->make{{ state.hasMany ? 'Many' : 'One' }}([]);
-            }
+        if (empty($model->{{ state.name }})) {
+        /** @var \{{ chunk.namespace }}{{ state.targetFixture }} $fixture */
+        $fixture = $this->fixture(self::{{ state.name|upper }});
+        $model->{{ state.name }} = $fixture->make{{ state.hasMany ? 'Many' : 'One' }}([]);
+        }
 
     {% endif %}
 {% endfor %}

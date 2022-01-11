@@ -14,3 +14,4 @@ parameters:
         - tests/Unit/Generator/FixtureFactoryTest.php
         - src/FuelOrmModel.php
         - tests/mock/Fixture.php
+        - tests/mock/ModelImitation.php
