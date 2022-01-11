@@ -23,7 +23,7 @@ final class FixtureFactory implements Factory
     {
         $fixture = new FixtureChunk();
         $fixture->namespace = $this->config->getNameSpace();
-        $fixture->class = $adapted->getClass();
+        $fixture->class = $this->name->getShortName($adapted->getClass());
         $fixture->name = str_replace('\\', '', $this->name->getFullName($adapted->getClass()));
 
         # if model has at least one relation, then we have to handle it's nested relations

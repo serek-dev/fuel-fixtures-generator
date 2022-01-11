@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Unit\Generator;
 
+use Mock\ModelImitation;
 use Orm\Model as BaseFuelOrm;
 use PHPUnit\Framework\TestCase;
 use Stwarog\FuelFixturesGenerator\Config;
@@ -75,6 +76,25 @@ final class FixtureFactoryTest extends TestCase
                 ],
             ];
         };
+    }
+
+    public function testClassNameShouldBeShortNameFromNameResolver(): void
+    {
+        // Given Factory and it's dependencies
+        $config = $this->createStub(Config::class);
+        $config->method('getNameSpace')->willReturn(self::NAMESPACE);
+        $nameGenerator = new FuelAwareNameGenerator($config);
+
+        $sut = new FixtureFactory($nameGenerator, $config);
+
+        // And Model with ORM relations
+        $fuelModel = new ModelImitation();
+
+        // When Fixture is created
+        $fixture = $sut->create(new AdaptedModel($fuelModel));
+
+        // Then namespace should be
+        $this->assertSame('MockModelImitationFixture', $fixture->name);
     }
 
     /**
