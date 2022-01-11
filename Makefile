@@ -1,9 +1,11 @@
 start: stop build check
 
-check: cs stan unit
+check: cs stan unit integration
 
 unit:
 	docker-compose run --rm composer tests:unit
+integration:
+	docker-compose run --rm composer tests:integration
 
 stan:
 	docker-compose run --rm composer phpstan
