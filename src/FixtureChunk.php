@@ -27,10 +27,15 @@ final class FixtureChunk
         $this->states[] = $state;
     }
 
-    /** @return array<string> */
+    /** @return array<int, array<string, string>> */
     public function getNestedFixtures(): array
     {
-        $mapped = array_map(fn(State $s) => $s instanceof Reference ? $s->targetFixture : null, $this->states);
+        $mapped = array_map(function (State $s) {
+            return $s instanceof Reference ? [
+                'target_fixture' => $s->targetFixture,
+                'target_model' => $s->targetModel,
+            ] : null;
+        }, $this->states);
         $filtered = array_filter($mapped);
         return array_values($filtered);
     }

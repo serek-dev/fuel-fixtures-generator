@@ -30,8 +30,12 @@ final class ServiceTest extends TestCase
         $chunk = new FixtureChunk();
         $chunk->name = 'chunk_name';
         $chunk->addState(new Callback('callback', 'callback'));
-        $chunk->addState(new Reference('reference', 'reference', 'FIXTURE_NAME', false));
-        $chunk->addState(new Reference('reference2', 'reference2', 'FIXTURE_NAME_2', false));
+        $chunk->addState(
+            new Reference('reference', 'reference', 'FIXTURE_NAME', false, 'target_model1')
+        );
+        $chunk->addState(
+            new Reference('reference2', 'reference2', 'FIXTURE_NAME_2', false, 'target_model2')
+        );
 
         $factory = $this->createStub(Factory::class);
         $factory->method('create')->willReturn($chunk);
@@ -60,10 +64,17 @@ final class ServiceTest extends TestCase
         // Then output should contain process details
         $expected = [
             'created' => 'storagePath/chunk_name.php',
-            'nested_fixtures' => [
-                'FIXTURE_NAME',
-                'FIXTURE_NAME_2',
-            ]
+            'nested_fixtures' =>
+                [
+                    [
+                        'target_fixture' => 'FIXTURE_NAME',
+                        'target_model' => 'target_model1',
+                    ],
+                    [
+                        'target_fixture' => 'FIXTURE_NAME_2',
+                        'target_model' => 'target_model2',
+                    ],
+                ]
         ];
         $this->assertSame($expected, $actual);
     }

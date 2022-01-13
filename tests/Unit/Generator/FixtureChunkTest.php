@@ -18,12 +18,25 @@ final class FixtureChunkTest extends TestCase
         // Given Chunk with some states
         $sut = new FixtureChunk();
         $sut->addState(new Callback('callback', 'callback'));
-        $sut->addState(new Reference('reference', 'reference', 'FIXTURE_NAME', false));
-        $sut->addState(new Reference('reference2', 'reference2', 'FIXTURE_NAME_2', false));
+        $sut->addState(
+            new Reference('reference', 'reference', 'FIXTURE_NAME', false, 'target_model1')
+        );
+        $sut->addState(
+            new Reference('reference2', 'reference2', 'FIXTURE_NAME_2', false, 'target_model1')
+        );
 
         // When getNestedFixturesCalled
         $actual = $sut->getNestedFixtures();
-        $expected = ['FIXTURE_NAME', 'FIXTURE_NAME_2'];
+        $expected = [
+            [
+                'target_fixture' => 'FIXTURE_NAME',
+                'target_model' => 'target_model1',
+            ],
+            [
+                'target_fixture' => 'FIXTURE_NAME_2',
+                'target_model' => 'target_model1',
+            ]
+        ];
 
         // Then result should be as expected
         $this->assertSame($expected, $actual);

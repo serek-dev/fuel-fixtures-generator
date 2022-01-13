@@ -27,7 +27,7 @@ final class Service
 
     /**
      * @param string $fuelOrmModel
-     * @return array{created: string, nested_fixtures: array<string>}
+     * @return array('created' => non-empty-string, 'nested_fixtures' => array<int, array<string, string>>
      */
     public function generate(string $fuelOrmModel): array
     {

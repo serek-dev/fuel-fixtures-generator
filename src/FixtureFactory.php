@@ -35,7 +35,8 @@ final class FixtureFactory implements Factory
         # each relation must be mapped to proper state for getStates method as well
         foreach ($adapted->getRelations() as $property => $data) {
             $target = $this->name->getShortName($data['target']);
-            $fixture->addState(new Reference($property, $property, $target, $data['has_many']));
+            $targetModel = $data['target'];
+            $fixture->addState(new Reference($property, $property, $target, $data['has_many'], $targetModel));
         }
 
         # we do not want to have relation FK props here, as Fixture package works using OOP approach

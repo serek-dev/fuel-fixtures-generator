@@ -11,13 +11,20 @@ final class Reference implements State
     public string $property;
     public string $targetFixture;
     public bool $hasMany;
+    public string $targetModel;
 
-    public function __construct(string $name, string $property, string $targetFixture, bool $hasMany)
-    {
+    public function __construct(
+        string $name,
+        string $property,
+        string $targetFixture,
+        bool $hasMany,
+        string $targetModel
+    ) {
         $this->name = $name;
         $this->property = $property;
         $this->targetFixture = $targetFixture;
         $this->hasMany = $hasMany;
+        $this->targetModel = $targetModel;
     }
 
     public function type(): string
