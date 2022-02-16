@@ -21,7 +21,7 @@ final class FuelAwareNameGenerator implements NameGenerator
         $isFuelName = strpos($class, '_') !== false;
         $class = str_replace('_', '', $class);
 
-        $namespace = $isFuelName ? $this->config->getNameSpace() : '';
+        $namespace = $isFuelName ? $this->config->getNamespace() : '';
 
         $fullName = $namespace . self::DELIMITER . $class . self::CLASS_SUFFIX;
 

@@ -4,7 +4,7 @@ namespace Stwarog\FuelFixturesGenerator;
 
 interface Config
 {
-    public function getNameSpace(): string;
+    public function getNamespace(): string;
 
     public function storagePath(): string;
 

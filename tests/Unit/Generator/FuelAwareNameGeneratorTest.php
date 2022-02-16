@@ -19,7 +19,7 @@ final class FuelAwareNameGeneratorTest extends TestCase
         // And Name generator that holds configured namespace
         $namespace = 'Tests\Fixtures';
         $config = $this->createMock(Config::class);
-        $config->method('getNameSpace')->willReturn($namespace);
+        $config->method('getNamespace')->willReturn($namespace);
 
         $sut = new FuelAwareNameGenerator($config);
 
@@ -39,7 +39,7 @@ final class FuelAwareNameGeneratorTest extends TestCase
         // And Name generator that holds configured namespace
         $namespace = 'Tests\Fixtures';
         $config = $this->createMock(Config::class);
-        $config->method('getNameSpace')->willReturn($namespace);
+        $config->method('getNamespace')->willReturn($namespace);
 
         $sut = new FuelAwareNameGenerator($config);
 
@@ -59,7 +59,7 @@ final class FuelAwareNameGeneratorTest extends TestCase
         // And Name generator that holds configured namespace
         $namespace = 'Tests\Fixtures';
         $config = $this->createMock(Config::class);
-        $config->method('getNameSpace')->willReturn($namespace);
+        $config->method('getNamespace')->willReturn($namespace);
 
         $sut = new FuelAwareNameGenerator($config);
 
@@ -79,7 +79,7 @@ final class FuelAwareNameGeneratorTest extends TestCase
         // And Name generator that holds configured namespace
         $namespace = 'Tests\Fixtures';
         $config = $this->createMock(Config::class);
-        $config->method('getNameSpace')->willReturn($namespace);
+        $config->method('getNamespace')->willReturn($namespace);
 
         $sut = new FuelAwareNameGenerator($config);
 

@@ -152,7 +152,7 @@ final class ServiceTest extends TestCase
                 $this->template = $template;
             }
 
-            public function getNameSpace(): string
+            public function getNamespace(): string
             {
                 return $this->namespace;
             }

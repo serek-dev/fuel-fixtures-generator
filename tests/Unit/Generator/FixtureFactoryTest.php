@@ -24,7 +24,7 @@ final class FixtureFactoryTest extends TestCase
     {
         // Given Factory and it's dependencies
         $config = $this->createStub(Config::class);
-        $config->method('getNameSpace')->willReturn(self::NAMESPACE);
+        $config->method('getNamespace')->willReturn(self::NAMESPACE);
         $nameGenerator = new FuelAwareNameGenerator($config);
 
         $sut = new FixtureFactory($nameGenerator, $config);

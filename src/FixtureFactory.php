@@ -22,7 +22,7 @@ final class FixtureFactory implements Factory
     public function create(Model $adapted): FixtureChunk
     {
         $fixture = new FixtureChunk();
-        $fixture->namespace = $this->config->getNameSpace();
+        $fixture->namespace = $this->config->getNamespace();
         $fixture->class = $adapted->getClass();
         $fixture->name = str_replace('\\', '', $this->name->getShortName($adapted->getClass()));
 
